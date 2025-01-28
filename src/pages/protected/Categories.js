@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setPageTitle } from "../../features/common/headerSlice";
-import Transactions from "../../features/transactions";
+import Categories from "../../features/product/categories";
 
 function InternalPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setPageTitle({ title: "Giao Dịch" }));
+    dispatch(setPageTitle({ title: "Thể Loại" }));
   }, []);
 
-  return <Transactions />;
+  return <Categories />;
 }
 
 export default InternalPage;
