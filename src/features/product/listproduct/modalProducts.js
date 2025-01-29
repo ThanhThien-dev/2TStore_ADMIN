@@ -77,6 +77,16 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
           ></textarea>
         </div>
 
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-1">Thể loại(*)</label>
+          <select multiple>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+            <option value="react">React</option>
+          </select>
+        </div>
+
         <div className="flex justify-end gap-4">
           <button
             className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400"

@@ -50,17 +50,17 @@ const routes = [
   {
     path: "/app/transactions", // url
     icon: <CurrencyDollarIcon className={iconClasses} />, // icon component
-    name: "Transactions", // name that appear in Sidebar
+    name: "Các Giao Dịch", // name that appear in Sidebar
   },
   {
     path: "/app/charts", // url
     icon: <ChartBarIcon className={iconClasses} />, // icon component
-    name: "Analytics", // name that appear in Sidebar
+    name: "Phân Tích", // name that appear in Sidebar
   },
   {
     path: "/app/customers", // url
     icon: <UsersIcon className={iconClasses} />, // icon component
-    name: "Customers", // name that appear in Sidebar
+    name: "Khách Hàng", // name that appear in Sidebar
   },
   {
     path: "/app/integration", // url
@@ -70,7 +70,7 @@ const routes = [
   {
     path: "/app/calendar", // url
     icon: <CalendarDaysIcon className={iconClasses} />, // icon component
-    name: "Calendar", // name that appear in Sidebar
+    name: "Lịch Hẹn", // name that appear in Sidebar
   },
 
   {
@@ -82,22 +82,22 @@ const routes = [
   {
     path: "", //no url needed as this has submenu
     icon: <Cog6ToothIcon className={`${iconClasses} inline`} />, // icon component
-    name: "Settings", // name that appear in Sidebar
+    name: "Cài Đặt", // name that appear in Sidebar
     submenu: [
       {
         path: "/app/settings-profile", //url
         icon: <UserIcon className={submenuIconClasses} />, // icon component
-        name: "Profile", // name that appear in Sidebar
+        name: "Thông tin cá nhân", // name that appear in Sidebar
       },
       {
         path: "/app/settings-billing",
         icon: <WalletIcon className={submenuIconClasses} />,
-        name: "Billing",
+        name: "Ví điện tử",
       },
       {
         path: "/app/settings-team", // url
         icon: <UsersIcon className={submenuIconClasses} />, // icon component
-        name: "Team Members", // name that appear in Sidebar
+        name: "Đội nhóm", // name that appear in Sidebar
       },
     ],
   },
