@@ -14,16 +14,16 @@ const userSourceData = [
 
 function UserChannels() {
   return (
-    <TitleCard title={"Top Selling Products"}>
+    <TitleCard title={"Hàng hóa bán chạy"}>
       {/** Table Data */}
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
               <th></th>
-              <th className="normal-case">Product</th>
-              <th className="normal-case">Price</th>
-              <th className="normal-case">Conversion</th>
+              <th className="normal-case">Tên sản phẩm</th>
+              <th className="normal-case">Giá</th>
+              <th className="normal-case">Tỉ lệ</th>
             </tr>
           </thead>
           <tbody>

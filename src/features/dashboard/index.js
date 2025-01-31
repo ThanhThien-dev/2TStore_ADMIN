@@ -2,10 +2,10 @@ import DashboardStats from "./components/DashboardStats";
 import AmountStats from "./components/AmountStats";
 import PageStats from "./components/PageStats";
 
-import UserGroupIcon from "@heroicons/react/24/outline/UserGroupIcon";
-import UsersIcon from "@heroicons/react/24/outline/UsersIcon";
-import CircleStackIcon from "@heroicons/react/24/outline/CircleStackIcon";
-import CreditCardIcon from "@heroicons/react/24/outline/CreditCardIcon";
+import ShoppingCartIcon from "@heroicons/react/24/outline/ShoppingCartIcon";
+import SparklesIcon from "@heroicons/react/24/outline/SparklesIcon";
+import TruckIcon from "@heroicons/react/24/outline/TruckIcon";
+import CurrencyDollarIcon from "@heroicons/react/24/outline/CurrencyDollarIcon";
 import UserChannels from "./components/UserChannels";
 import LineChart from "./components/LineChart";
 import BarChart from "./components/BarChart";
@@ -19,27 +19,27 @@ import { getAllProduct } from "../../services/productService";
 
 const statsData = [
   {
-    title: "New Users",
-    value: "34.7k",
-    icon: <UserGroupIcon className="w-8 h-8" />,
+    title: "Số lượng sản phẩm đã bán",
+    value: "369",
+    icon: <ShoppingCartIcon className="w-8 h-8" />,
     description: "↗︎ 2300 (22%)",
   },
   {
-    title: "Total Sales",
-    value: "$34,545",
-    icon: <CreditCardIcon className="w-8 h-8" />,
-    description: "Current month",
+    title: "Tổng doanh thu",
+    value: "$340,55",
+    icon: <CurrencyDollarIcon className="w-8 h-8" />,
+    description: "Tháng hiện tại",
   },
   {
-    title: "Pending Leads",
-    value: "450",
-    icon: <CircleStackIcon className="w-8 h-8" />,
-    description: "50 in hot leads",
+    title: "Đơn hàng đang giao",
+    value: "45",
+    icon: <TruckIcon className="w-8 h-8" />,
+    description: "5 đơn đang gấp",
   },
   {
-    title: "Active Users",
-    value: "5.6k",
-    icon: <UsersIcon className="w-8 h-8" />,
+    title: "Tổng số đơn hoàn thành",
+    value: "560",
+    icon: <SparklesIcon className="w-8 h-8" />,
     description: "↙ 300 (18%)",
   },
 ];

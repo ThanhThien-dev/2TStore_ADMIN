@@ -1,4 +1,5 @@
 import moment from "moment";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showNotification } from "../common/headerSlice";
@@ -148,9 +149,11 @@ function Transactions() {
                     <td>{l.location}</td>
                     <td>{moment(l.date).format("D MMM")}</td>
                     <td>
-                      <button className="btn-actions">
-                        <span className="btn-text">View</span>
-                      </button>
+                      <Link to={`/app/oder-detail`}>
+                        <button className="btn-actions">
+                          <span className="btn-text">View</span>
+                        </button>
+                      </Link>
                     </td>
                   </tr>
                 );
