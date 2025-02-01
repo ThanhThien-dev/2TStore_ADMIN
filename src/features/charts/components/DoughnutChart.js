@@ -23,12 +23,12 @@ function DoughnutChart() {
   };
 
   const labels = [
-    "Electronics",
-    "Home Applicances",
-    "Beauty",
-    "Furniture",
-    "Watches",
-    "Apparel",
+    "Quần thể thao",
+    "Áo thể thao",
+    "Giày thể thao",
+    "Phụ kiện thể thao",
+    "Vợt cầu lông",
+    "Bóng đá",
   ];
 
   const data = {
