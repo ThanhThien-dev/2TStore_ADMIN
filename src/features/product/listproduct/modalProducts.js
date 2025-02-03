@@ -6,11 +6,13 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
+  const [category, setCategory] = useState(["Clothes", "Men", "Fashion"]);
+  const [brand, setBrand] = useState(["US", "VN", "UK"]);
 
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    if (!img || !title || !price) {
+    if (!img || !title || !price || !category || !brand) {
       dispatch(
         showNotification({
           message: "Vui lòng nhập đầy đủ thông tin!",
@@ -23,12 +25,27 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
       img,
       title,
       price,
+      category,
+      brand,
     });
     // Reset modal
     setImg("");
     setTitle("");
     setPrice("");
+    setCategory("");
+    setBrand("");
     onClose();
+  };
+
+  const handleAddTag = (e) => {
+    if (e.key === "Enter" && e.target.value) {
+      setCategory([...category, e.target.value]);
+      e.target.value = "";
+    }
+  };
+
+  const handleRemoveTag = (index) => {
+    setCategory(category.filter((_, i) => i !== index));
   };
 
   if (!isOpen) return null;
@@ -79,11 +96,25 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
 
         <div className="mb-4">
           <label className="block text-sm font-medium mb-1">Thể loại(*)</label>
-          <select multiple>
-            <option value="html">HTML</option>
-            <option value="css">CSS</option>
-            <option value="javascript">JavaScript</option>
-            <option value="react">React</option>
+          <select className="w-full border border-gray-300 rounded-md p-2">
+            {category.map((item, index) => (
+              <option value={item} key={index}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-1">
+            Thương hiệu(*)
+          </label>
+          <select className="w-full border border-gray-300 rounded-md p-2">
+            {brand.map((item, index) => (
+              <option value={item} key={index}>
+                {item}
+              </option>
+            ))}
           </select>
         </div>
 
