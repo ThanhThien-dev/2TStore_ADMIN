@@ -6,13 +6,14 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
   const [category, setCategory] = useState(["Clothes", "Men", "Fashion"]);
   const [brand, setBrand] = useState(["US", "VN", "UK"]);
 
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    if (!img || !title || !price || !category || !brand) {
+    if (!img || !title || !price || !category || !brand || !description) {
       dispatch(
         showNotification({
           message: "Vui lòng nhập đầy đủ thông tin!",
@@ -25,6 +26,7 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
       img,
       title,
       price,
+      description,
       category,
       brand,
     });
@@ -32,6 +34,7 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
     setImg("");
     setTitle("");
     setPrice("");
+    setDescription("");
     setCategory("");
     setBrand("");
     onClose();
@@ -84,14 +87,27 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-1">Giá(*)</label>
+          <label className="block text-sm font-medium mb-1">
+            Mô tả sản phẩm(*)
+          </label>
           <textarea
             className="w-full border border-gray-300 rounded-md p-2"
             rows="4"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Nhập mô tả sản phẩm"
+          ></textarea>
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-1">Giá(*)</label>
+          <input
+            type="number"
+            className="w-full border border-gray-300 rounded-md p-2"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder="Nhập giá sản phẩm"
-          ></textarea>
+            min="0"
+          />
         </div>
 
         <div className="mb-4">
