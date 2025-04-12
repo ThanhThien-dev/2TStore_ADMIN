@@ -40,17 +40,6 @@ function ModalProducts({ isOpen, onClose, onSubmit }) {
     onClose();
   };
 
-  const handleAddTag = (e) => {
-    if (e.key === "Enter" && e.target.value) {
-      setCategory([...category, e.target.value]);
-      e.target.value = "";
-    }
-  };
-
-  const handleRemoveTag = (index) => {
-    setCategory(category.filter((_, i) => i !== index));
-  };
-
   if (!isOpen) return null;
 
   return (

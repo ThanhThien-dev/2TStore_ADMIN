@@ -1,17 +1,30 @@
-import * as httpRequest from "../utils/httpRequest";
+import { get, post } from "../utils/httpRequest"; // Thêm import `post`
 
 export const getAllProduct = async () => {
   try {
-    // Gọi API mà không cần token (không cần axiosJWT)
-    const res = await httpRequest.get("products/");
-
-    if (res) {
-      return res; // Trả về dữ liệu nếu có
-    } else {
-      return null; // Trả về null nếu không có dữ liệu
-    }
+    const res = await get("products/");
+    return res || null;
   } catch (error) {
     console.error("Error fetching products:", error);
-    return null; // Nếu có lỗi, trả về null
+    return null;
+  }
+};
+
+export const getProductBySlug = async (name) => {
+  try {
+    const res = await get(`productBySlug/${name}`);
+    return res || null;
+  } catch (error) {
+    console.error("Error fetching product by slug:", error);
+    return null;
+  }
+};
+
+export const addProduct = async (productData) => {
+  try {
+    return await post("products/add", productData);
+  } catch (error) {
+    console.error("Error adding product:", error);
+    throw error;
   }
 };

@@ -2,42 +2,43 @@ import React, { useEffect, useState } from "react";
 import PencilSquareIcon from "@heroicons/react/24/outline/PencilSquareIcon";
 import TrashIcon from "@heroicons/react/24/outline/TrashIcon";
 
+import { getAllProduct, addProduct } from "../../../services/productService";
 import SearchBar from "../../../components/Input/SearchBar";
 import ModalProducts from "./modalProducts";
 
-const fetchProducts = async () => {
-  try {
-    const res = await fetch("https://dummyjson.com/products");
-    const data = await res.json();
-    return data.products;
-  } catch (error) {
-    console.error("Error fetching products:", error);
-  }
-};
-
 function ListProduct() {
-  const [productsList, setProductsList] = useState([]);
+  const [productsList, setProductsList] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const getProducts = async () => {
-      const products = await fetchProducts();
-      setProductsList(products);
-    };
-    getProducts();
+    fetchProducts();
   }, []);
 
-  const handleAdd = (product) => {
-    fetch("https://dummyjson.com/products/add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        img: product.img,
-        title: product.title,
-        price: product.price,
-      }),
-    }).then((res) => res.json());
+  const fetchProducts = async () => {
+    const products = await getAllProduct();
+    setProductsList(products || []);
   };
+
+  const handleAdd = async (product) => {
+    try {
+      const newProduct = await addProduct({
+        name: product.title,
+        img: product.img,
+        price: product.price,
+        description: product.description,
+        category: product.category,
+        brand: product.brand,
+      });
+      if (newProduct) {
+        fetchProducts(); // Cập nhật lại danh sách sản phẩm sau khi thêm
+        setIsModalOpen(false);
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+    }
+  };
+
+  console.log("LIST PRODUCT: ", productsList);
 
   return (
     <>
@@ -67,9 +68,17 @@ function ListProduct() {
               key={product.id}
               className="card w-full p-6 bg-base-100 shadow-xl "
             >
-              <img className="mb-2" src={product.images} alt="Product" />
-              <p className="text-gray">{product.title}</p>
-              <p className="font-bold">{product.price}$</p>
+              <img
+                className="mb-2"
+                src="https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-pic-design-profile-vector-png-image_40966566.jpg"
+                alt="Product"
+              />
+              <p className="text-gray">{product.name}</p>
+              <p className="font-bold">
+                {product.ProductDetails?.[0]?.selling_price
+                  ? `${product.ProductDetails[0].selling_price}$`
+                  : "N/A"}
+              </p>
               <div className="flex justify-evenly mt-2">
                 <div>
                   <button
